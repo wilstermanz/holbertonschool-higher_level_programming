@@ -81,3 +81,16 @@ Adding multiple strings:
     Traceback (most recent call last):
     ...
     TypeError: a must be an integer
+
+Adding None:
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Adding invalid data types:
+    >>> a = {1: "a", 2: "b", 3: "c", 4: "d"}
+    >>> add_integer(a)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
