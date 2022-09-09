@@ -1,18 +1,14 @@
 #!/usr/bin/python3
 """
-    Module for task 0
+    Task 0
+    Write a function that adds 2 integers.
+    Prototype: def add_integer(a, b=98):
 """
 
 
 def add_integer(a, b=98):
-    """Adds two integers and returns the sum
-
-    Args:
-        a (int, float): First int to be added
-        b (int, float, optional): Second int to be added. Defaults to 98.
-
-    Raises:
-        TypeError: if a or b is not type int or float
+    """
+        Adds two integers and returns the sum
     """
     if type(a) not in [int, float]:
         raise TypeError("a must be an integer")
