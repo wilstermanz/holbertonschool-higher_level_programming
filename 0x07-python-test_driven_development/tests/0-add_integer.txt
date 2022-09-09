@@ -23,3 +23,24 @@ Empty arguments:
     Traceback (most recent call last):
     ...
     TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Passing floats:
+    >>> add_integer(2.2, 2)
+    4
+
+Adding negatives:
+    >>> add_integer(-2, -2)
+    -4
+
+a is not an int or float:
+    >>> add_integer("Hello World")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+b is not an int or float:
+    >>> add_integer(2, "Hello World")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
