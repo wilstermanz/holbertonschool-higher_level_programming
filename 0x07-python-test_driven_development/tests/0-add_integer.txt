@@ -68,9 +68,16 @@ Adding zeros:
     >>> add_integer(0, 0)
     0
 
+Infinite float:
     >>> a = float("inf")
     >>> b = 10
     >>> add_integer(a, b)
     Traceback (most recent call last):
     ...
     OverflowError: cannot convert float infinity to integer
+
+Adding multiple strings:
+    >>> add_integer("Hello", "World")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
