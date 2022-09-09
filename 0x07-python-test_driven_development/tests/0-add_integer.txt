@@ -24,9 +24,9 @@ Empty arguments:
     ...
     TypeError: add_integer() missing 1 required positional argument: 'a'
 
-Passing floats:
-    >>> add_integer(2.2, 2)
-    4
+Adding floats:
+    >>> add_integer(2.2, 102.000022)
+    104
 
 Adding negatives:
     >>> add_integer(-2, -2)
@@ -44,3 +44,18 @@ b is not an int or float:
     ...
     TypeError: b must be an integer
 
+Adding negative floats:
+    >>> add_integer(-100.5, -200.0003)
+    -300
+
+a is float, b is int:
+    >>> add_integer(.999)
+    98
+
+b is float, a is int:
+    >>> add_integer(2, 98.99999)
+    100
+
+Adding zeros:
+    >>> add_integer(0, 0)
+    0
