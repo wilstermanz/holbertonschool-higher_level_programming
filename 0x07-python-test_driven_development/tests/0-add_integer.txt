@@ -64,11 +64,11 @@ Invalid inputs:
     >>> add_integer(2, None)
     Traceback (most recent call last):
     ...
-    TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+    TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
     >>> add_integer(None, None)
     Traceback (most recent call last):
     ...
-    TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+    TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'
     >>> add_integer()
     Traceback (most recent call last):
     ...
