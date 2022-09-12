@@ -74,3 +74,9 @@ Passing in a long string:
     Quae animi affectio suum cuique tribuens atque hanc, quam dico.
     <BLANKLINE>
     Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+Passing in too many arguments:
+    >>> text_indentation("hello", "world")
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() takes 1 positional argument but 2 were given
