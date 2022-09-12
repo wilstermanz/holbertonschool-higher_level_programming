@@ -111,3 +111,26 @@ QA case:
     Fine:
     <BLANKLINE>
     Thanks
+
+Special char at beginning:
+    >>> text_indentation(".Hello.")
+    .
+    <BLANKLINE>
+    Hello.
+    <BLANKLINE>
+
+Multiple special chars:
+    >>> text_indentation(".:?")
+    .
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+
+Mulitple spaces:
+    >>> text_indentation("Hello.   World.")
+    Hello.
+    <BLANKLINE>
+    World.
+    <BLANKLINE>
