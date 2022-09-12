@@ -58,17 +58,11 @@ Invalid inputs:
     ...
     TypeError: a must be an integer
     >>> add_integer(None, 2)
-    Traceback (most recent call last):
-    ...
-    TypeError: a cannot be None
+    2
     >>> add_integer(2, None)
-    Traceback (most recent call last):
-    ...
-    TypeError: b cannot be None
+    2
     >>> add_integer(None, None)
-    Traceback (most recent call last):
-    ...
-    TypeError: a cannot be None
+    0
     >>> add_integer()
     Traceback (most recent call last):
     ...
