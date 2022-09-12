@@ -44,6 +44,14 @@ Floats and negative floats:
     >>> add_integer(-1.99, -1.01)
     -2
 
+None is 0:
+    >>> add_integer(None, 2)
+    2
+    >>> add_integer(2, None)
+    2
+    >>> add_integer(None, None)
+    0
+
 Invalid inputs:
     >>> add_integer("holberton", 2)
     Traceback (most recent call last):
@@ -57,12 +65,6 @@ Invalid inputs:
     Traceback (most recent call last):
     ...
     TypeError: a must be an integer
-    >>> add_integer(None, 2)
-    2
-    >>> add_integer(2, None)
-    2
-    >>> add_integer(None, None)
-    0
     >>> add_integer()
     Traceback (most recent call last):
     ...
