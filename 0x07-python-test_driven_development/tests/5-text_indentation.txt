@@ -80,3 +80,6 @@ Passing in too many arguments:
     Traceback (most recent call last):
     ...
     TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+Passing in empty string:
+    >>> text_indentation("")
