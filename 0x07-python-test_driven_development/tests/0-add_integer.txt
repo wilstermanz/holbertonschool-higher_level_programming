@@ -60,15 +60,15 @@ Invalid inputs:
     >>> add_integer(None, 2)
     Traceback (most recent call last):
     ...
-    TypeError: 'NoneType' object is not subscriptable
+    TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
     >>> add_integer(2, None)
     Traceback (most recent call last):
     ...
-    TypeError: 'NoneType' object is not subscriptable
+    TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
     >>> add_integer(None, None)
     Traceback (most recent call last):
     ...
-    TypeError: 'NoneType' object is not subscriptable
+    TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
     >>> add_integer()
     Traceback (most recent call last):
     ...
