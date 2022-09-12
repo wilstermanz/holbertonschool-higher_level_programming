@@ -13,7 +13,6 @@ Prototype: def add_integer(a, b=98):
 * You are not allowed to import any module
 
 First import ``add_integer`` from the ``0-add_integer`` module:
-
     >>> add_integer = __import__('0-add_integer').add_integer
 
 Now use it:
@@ -93,7 +92,13 @@ Adding invalid data types:
     ...
     TypeError: a must be an integer
 
-Bad argument syntax:
+Adding too many arguments:
+    >>> add_integer(2, 2, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Bad input syntax:
     >>> add_integer(2 2)
     Traceback (most recent call last):
     ...
