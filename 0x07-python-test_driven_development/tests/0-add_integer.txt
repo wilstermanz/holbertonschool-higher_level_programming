@@ -1,66 +1,92 @@
-Importing add_integer function to doctest    
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+
+Write a function that adds 2 integers.
+
+    * Prototype: def add_integer(a, b=98):
+    * a and b must be integers or floats, otherwise raise a TypeError
+      exception with the message a must be an integer or b must be an integer
+    * a and b must be first casted to integers if they are float
+    * Returns an integer: the addition of a and b
+    * You are not allowed to import any module
+
+First import ``add_integer`` from the ``0-add_integer`` module:
     >>> add_integer = __import__('0-add_integer').add_integer
 
-Testing when a is not an integer
-    >>> add_integer("hello", 98)
-    Traceback (most recent call last):
-        ...
-    TypeError: a must be an integer
-
-Testing when b is not an integer
-    >>> add_integer(35, "World")
-    Traceback (most recent call last):
-        ...
-    TypeError: b must be an integer
-
-Testing a is an integer, b is not passed
+Simple, valid cases:
+    >>> add_integer(2, 2)
+    4
     >>> add_integer(2)
     100
 
-Testing a and b are negative
-    >>> add_integer(-35, -40)
-    -75
+Valid cases with negatives:
+    >>> add_integer(-2, 2)
+    0
+    >>> add_integer(2, -2)
+    0
+    >>> add_integer(-2, -2)
+    -4
 
-Testing if a float is passed to a
-    >>> add_integer(5.4, 10)
-    15
+Floats and negative floats:
+    >>> add_integer(1.99, 2)
+    3
+    >>> add_integer(2, 1.01)
+    3
+    >>> add_integer(1.99, 1.01)
+    2
+    >>> add_integer(-1.99, 1.01)
+    0
+    >>> add_integer(1.99, -1.01)
+    0
+    >>> add_integer(-1.99, -1.01)
+    -2
 
-Testing very long float passed to b
-    >>> add_integer(10, 0.98869039757839208585782092847592)
-    10
-
-Testing boolean value passed to a
-    >>> add_integer(True, 5)
+Invalid inputs:
+    >>> add_integer("holberton", 2)
     Traceback (most recent call last):
-        ...
+    ...
     TypeError: a must be an integer
-
-Testing for no values passed
+    >>> add_integer(2, "school")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+    >>> add_integer("holberton", "school")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+    >>> add_integer(2, None)
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+    >>> add_integer(None, None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
     >>> add_integer()
     Traceback (most recent call last):
-        ...
+    ...
     TypeError: add_integer() missing 1 required positional argument: 'a'
-
-Testing if string is typecasted as an integer
-    >>> add_integer(1, int("World"))
+    >>> add_integer(2, 2, 2)
     Traceback (most recent call last):
-        ...
-    ValueError: invalid literal for int() with base 10: 'World'
-
-Testing if complex number is passed
-    >>> add_integer(7j, 8)
+    ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+    >>> add_integer(int("holberton school"), 2)
     Traceback (most recent call last):
-        ...
+    ...
+    ValueError: invalid literal for int() with base 10: 'holberton school'
+    >>> add_integer(2 + 2j, 2)
+    Traceback (most recent call last):
+    ...
     TypeError: a must be an integer
-
-Testing for infinity passed
     >>> add_integer(float('inf'), 2)
     Traceback (most recent call last):
-        ...
+    ...
     OverflowError: cannot convert float infinity to integer
-
-Testing for None passed
-    >>> add_integer(None, 2)
-    Traceback (most recent call last):
-        ...
-    TypeError: 'NoneType' object is not subscriptable
+    
