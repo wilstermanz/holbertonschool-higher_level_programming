@@ -93,3 +93,7 @@ Passing in too many arguments:
 
 Passing in empty string:
     >>> text_indentation("")
+
+Passing in int typecast to str:
+    >>> text_indentation(str(3))
+    3
