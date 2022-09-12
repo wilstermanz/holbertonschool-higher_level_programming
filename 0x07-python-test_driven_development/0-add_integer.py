@@ -1,28 +1,26 @@
 #!/usr/bin/python3
-"""Returns the sum of two integers, or floats typecasted as int
+"""
+    Task 0
+    Write a function that adds 2 integers.
+    Prototype: def add_integer(a, b=98):
 """
 
 
 def add_integer(a, b=98):
-    """Math takes place here"""
+    """
+        Adds two integers and returns the sum
+    """
+    if a is None:
+        raise TypeError("'NoneType' object is not subscriptable")
+    if b is None:
+        raise TypeError("'NoneType' object is not subscriptable")
+    if type(a) not in [int, float]:
+        raise TypeError("a must be an integer")
+    if type(b) not in [int, float]:
+        raise TypeError("b must be an integer")
     if type(a) is float:
         a = int(a)
     if type(b) is float:
         b = int(b)
 
-    if a is None:
-        raise TypeError("'NoneType' object is not subscriptable")
-    if b is None:
-        raise TypeError("'NoneType' object is not subscriptable")
-    """
-    if type(a) is complex:
-        raise TypeError("a must be an integer")
-    if type(b) is complex:
-        raise TypeError("b must be an integer")
-    """
-    if type(a) is not int:
-        raise TypeError("a must be an integer")
-    if type(b) is not int:
-        raise TypeError("b must be an integer")
-
-    return(a + b)
+    return a + b
