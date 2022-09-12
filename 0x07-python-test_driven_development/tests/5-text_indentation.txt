@@ -14,9 +14,19 @@ Write a function that prints a text with 2 new lines after each of these charact
 import ``text_indentation`` from ``5-text_indentation``
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Example working as intended:
+Example working as intended with period:
     >>> text_indentation("hello, world.")
     hello, world.
+    <BLANKLINE>
+
+Example working as intended with question mark:
+    >>> text_indentation("hello, world?")
+    hello, world?
+    <BLANKLINE>
+
+Example working as intended with colon:
+    >>> text_indentation("hello, world:")
+    hello, world:
     <BLANKLINE>
 
 Passing in not a string:
