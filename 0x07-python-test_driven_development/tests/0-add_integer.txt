@@ -60,15 +60,15 @@ Invalid inputs:
     >>> add_integer(None, 2)
     Traceback (most recent call last):
     ...
-    TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+    TypeError: 'NoneType' object is not subscriptable
     >>> add_integer(2, None)
     Traceback (most recent call last):
     ...
-    TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+    TypeError: 'NoneType' object is not subscriptable
     >>> add_integer(None, None)
     Traceback (most recent call last):
     ...
-    TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'
+    TypeError: 'NoneType' object is not subscriptable
     >>> add_integer()
     Traceback (most recent call last):
     ...
@@ -89,4 +89,3 @@ Invalid inputs:
     Traceback (most recent call last):
     ...
     OverflowError: cannot convert float infinity to integer
-    
