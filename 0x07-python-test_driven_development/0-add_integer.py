@@ -11,9 +11,9 @@ def add_integer(a, b=98):
         Adds two integers and returns the sum
     """
 
-    if type(a) is float or a == None:
+    if type(a) is float or a is None:
         a = int(a)
-    if type(b) is float or b == None:
+    if type(b) is float or b is None:
         b = int(b)
 
     if type(a) not in [int, float]:
