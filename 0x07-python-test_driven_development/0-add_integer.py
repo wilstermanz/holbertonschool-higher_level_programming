@@ -10,6 +10,10 @@ def add_integer(a, b=98):
     if type(b) is float:
         b = int(b)
 
+    if a is None:
+        raise TypeError("'NoneType' object is not subscriptable")
+    if b is None:
+        raise TypeError("'NoneType' object is not subscriptable")
     """
     if type(a) is complex:
         raise TypeError("a must be an integer")
