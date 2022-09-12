@@ -97,3 +97,17 @@ Passing in empty string:
 Passing in int typecast to str:
     >>> text_indentation(str(3))
     3
+
+No special char in string input:
+    >>> text_indentation("hello")
+    hello
+
+QA case:
+    >>> text_indentation("Hello. How are you? Fine: Thanks")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    Fine:
+    <BLANKLINE>
+    Thanks
