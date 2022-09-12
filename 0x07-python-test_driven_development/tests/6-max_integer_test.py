@@ -13,6 +13,13 @@ class TestMaxInteger(unittest.TestCase):
         unittest (_type_): _description_
     """
 
+    def test_docstrings(self):
+        # Checks module and function docstrings
+        modDocstring = __import__('6-max_integer').__doc__
+        self.assertIsNotNone(modDocstring)
+        funcDocstring = __import__('6-max_integer').max_integer.__doc__
+        self.assertIsNotNone(funcDocstring)
+
     def test_simple(self):
         # Tests with simple, positive integers
         self.assertEqual(max_integer([0, 1, 2, 3]), 3)
@@ -43,6 +50,8 @@ class TestMaxInteger(unittest.TestCase):
             max_integer([0, "school", 1])
         with self.assertRaises(TypeError):
             max_integer(5)
+        with self.assertRaises(TypeError):
+            max_integer(None)
 
     def test_string(self):
         # Finds the highest value in a string
@@ -53,3 +62,8 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([1, 2, 2.5, 3]), 3)
         self.assertEqual(max_integer([1, 2, 2, 3.5]), 3.5)
         self.assertEqual(max_integer([1.1, 1.2, 1.5, 1.3]), 1.5)
+
+    def test_one_arg(self):
+        self.assertEqual(max_integer([1]), 1)
+        self.assertEqual(max_integer([2]), 2)
+        self.assertEqual(max_integer([3]), 3)
