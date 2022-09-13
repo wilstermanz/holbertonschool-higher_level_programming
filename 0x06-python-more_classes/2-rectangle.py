@@ -44,6 +44,8 @@ class Rectangle:
         return (self.__width + self.__height) * 2
 
     def __str__(self):
+        if self.perimeter() == 0:
+            return ""
         row = '#' * self.__width
         square = ""
         for i in range(self.__height):
