@@ -2,9 +2,6 @@
 """Module for task 8"""
 
 
-from lib2to3.pytree import Base
-
-
 class BaseGeometry:
     """Defines geometry"""
 
