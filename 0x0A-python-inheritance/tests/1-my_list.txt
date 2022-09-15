@@ -66,3 +66,53 @@ Test with too many inputs:
     Traceback (most recent call last):
     ...
     TypeError: list expected at most 1 argument, got 2
+
+Test with repeated elements:
+    >>> testlist = MyList([1, 1, 1, 1])
+    >>> testlist
+    [1, 1, 1, 1]
+    >>> testlist.print_sorted()
+    [1, 1, 1, 1]
+
+    >>> testlist = MyList([0, 0, 0, 0])
+    >>> testlist
+    [0, 0, 0, 0]
+    >>> testlist.print_sorted()
+    [0, 0, 0, 0]
+
+    >>> testlist = MyList([0, 1, 0, 0])
+    >>> testlist
+    [0, 1, 0, 0]
+    >>> testlist.print_sorted()
+    [0, 0, 0, 1]
+
+Appending items to list:
+    >>> testlist = MyList()
+    >>> testlist
+    []
+    >>> testlist.print_sorted()
+    []
+
+    >>> testlist.append(1)
+    >>> testlist
+    [1]
+    >>> testlist.print_sorted()
+    [1]
+
+    >>> testlist.append(6)
+    >>> testlist
+    [1, 6]
+    >>> testlist.print_sorted()
+    [1, 6]
+
+    >>> testlist.append(-100)
+    >>> testlist
+    [1, 6, -100]
+    >>> testlist.print_sorted()
+    [-100, 1, 6]
+
+    >>> testlist.append(23)
+    >>> testlist
+    [1, 6, -100, 23]
+    >>> testlist.print_sorted()
+    [-100, 1, 6, 23]
