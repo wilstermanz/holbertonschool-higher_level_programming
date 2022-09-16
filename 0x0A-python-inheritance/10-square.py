@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Module for task 9"""
 Rectangle = __import__('9-rectangle').Rectangle
 
