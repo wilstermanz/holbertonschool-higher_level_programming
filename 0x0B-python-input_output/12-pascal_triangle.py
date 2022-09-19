@@ -3,6 +3,10 @@
 
 
 def pascal_triangle(n):
+    """
+        This function creates a list of lists representing
+        pascal's triangle for a given number of rows
+    """
     if n <= 0:
         return []
 
