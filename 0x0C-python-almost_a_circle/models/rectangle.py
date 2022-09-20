@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Contains Rectangle class"""
+from xml.dom.minidom import AttributeList
 from models.base import Base
 
 
@@ -84,16 +85,12 @@ class Rectangle(Base):
                 f"{self.__x}/{self.__y} - "
                 f"{self.__width}/{self.__height}")
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updates the rectangle's attributes"""
-        numArgs = len(args)
-        if numArgs > 0:
-            self.id = args[0]
-        if numArgs > 1:
-            self.__width = args[1]
-        if numArgs > 2:
-            self.__height = args[2]
-        if numArgs > 3:
-            self.__x = args[3]
-        if numArgs > 4:
-            self.__y = args[4]
+        if args is not None and len(args) != 0:
+            attr_list = ['id', 'width', 'height', 'x', 'y']
+            for arg_no in range(len(args)):
+                setattr(self, attr_list[arg_no], args[arg_no])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
