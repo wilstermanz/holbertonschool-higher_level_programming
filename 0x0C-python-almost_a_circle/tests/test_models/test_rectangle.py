@@ -15,6 +15,8 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNotNone(clsDocstring)
         methDocstring = __import__('models').rectangle.Rectangle.area.__doc__
         self.assertIsNotNone(methDocstring)
+        methDocstring = __import__('models').rectangle.Rectangle.display.__doc__
+        self.assertIsNotNone(methDocstring)
 
     def test_simple_testcases(self):
         """Checks for simple, correct test cases"""
