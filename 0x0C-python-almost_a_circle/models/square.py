@@ -26,7 +26,7 @@ class Square(Rectangle):
     def __str__(self):
         """Sets str value of the square"""
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
-    
+
     def update(self, *args, **kwargs):
         """Updates attributes"""
         if args is not None and len(args) != 0:
