@@ -17,6 +17,8 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNotNone(mDocstring)
         mDocstring = __import__('models').rectangle.Rectangle.display.__doc__
         self.assertIsNotNone(mDocstring)
+        mDocstring = __import__('models').rectangle.Rectangle.update.__doc__
+        self.assertIsNotNone(mDocstring)
 
     def test_simple_testcases(self):
         """Checks for simple, correct test cases"""
@@ -71,3 +73,17 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.__str__(), f"[Rectangle] ({r.id}) 1/0 - 5/5")
         r = Rectangle(1, 1)
         self.assertEqual(r.__str__(), f"[Rectangle] ({r.id}) 0/0 - 1/1")
+
+    def test_update(self):
+            r1 = Rectangle(10, 10, 10, 10, 10)
+            self.assertEqual(r1.id, 10)
+            self.assertEqual(r1.width, 10)
+            self.assertEqual(r1.height, 10)
+            self.assertEqual(r1.x, 10)
+            self.assertEqual(r1.y, 10)
+            r1.update(89, 2, 3, 4, 5)
+            self.assertEqual(r1.id, 89)
+            self.assertEqual(r1.width, 2)
+            self.assertEqual(r1.height, 3)
+            self.assertEqual(r1.x, 4)
+            self.assertEqual(r1.y, 5)
