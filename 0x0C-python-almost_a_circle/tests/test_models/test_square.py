@@ -77,12 +77,12 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r1.height, 10)
         self.assertEqual(r1.x, 10)
         self.assertEqual(r1.y, 10)
-        r1.update(89, 2, 3, 4, 5)
+        r1.update(89, 2, 3, 4)
         self.assertEqual(r1.id, 89)
         self.assertEqual(r1.width, 2)
-        self.assertEqual(r1.height, 3)
-        self.assertEqual(r1.x, 4)
-        self.assertEqual(r1.y, 5)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 3)
+        self.assertEqual(r1.y, 4)
 
     def test_update_kwargs(self):
         r1 = Square(10, 10, 10, 10)
