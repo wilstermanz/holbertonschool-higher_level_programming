@@ -4,7 +4,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """Defines a rectangle"""
+    """Defines a rectangle, inherits from class Base"""
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initializes new rectangles
 
