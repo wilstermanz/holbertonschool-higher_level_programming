@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Contains Rectangle class"""
-from xml.dom.minidom import AttributeList
 from models.base import Base
 
 
@@ -81,6 +80,7 @@ class Rectangle(Base):
             print((' ' * self.__x)+('#' * self.__width))
 
     def __str__(self):
+        """Sets str value of the rectangle"""
         return (f"[Rectangle] ({self.id}) "
                 f"{self.__x}/{self.__y} - "
                 f"{self.__width}/{self.__height}")
