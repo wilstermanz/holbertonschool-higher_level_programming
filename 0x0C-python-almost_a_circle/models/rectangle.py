@@ -11,9 +11,9 @@ class Rectangle(Base):
         Args:
             width (int): width of rectangle
             height (int): height of the rectangle
-            x (int, optional): _description_. Defaults to 0.
-            y (int, optional): _description_. Defaults to 0.
-            id (int, optional): Inherits from super. Defaults to None.
+            x (int, optional): position x of rectangle. Defaults to 0.
+            y (int, optional): position y of rectangle. Defaults to 0.
+            id (int, optional): Inherits from super.
         """
         super().__init__(id)
         self.width = width
@@ -75,8 +75,9 @@ class Rectangle(Base):
 
     def display(self):
         """Prints the rectangle to stdout"""
-        for row in range(self.height):
-            print('#' * self.width)
+        print('\n' * self.__y, end='')
+        for rows in range(self.__height):
+            print((' ' * self.__x)+('#' * self.__width))
 
     def __str__(self):
         return (f"[Rectangle] ({self.id}) "
