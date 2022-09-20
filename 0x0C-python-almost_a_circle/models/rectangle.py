@@ -97,4 +97,8 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """Returns dictionary representation of a Rectangle"""
-        return self.__dict__
+        my_dict = {}
+        for key, value in vars(self).items():
+            key = key.replace("_Rectangle__", "")
+            my_dict[key] = value
+        return my_dict
