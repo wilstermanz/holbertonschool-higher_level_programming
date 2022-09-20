@@ -5,12 +5,10 @@ from models.base import Base
 
 
 class TestBase(unittest.TestCase):
-    """Unit test suite for Base"""
+    """Unit test suite for Rectangle"""
 
     def test_docstrings(self):
         """Checks module and function docstrings"""
-        modDocstring = __import__('models').__doc__
-        self.assertIsNotNone(modDocstring)
         modDocstring = __import__('models').base.__doc__
         self.assertIsNotNone(modDocstring)
         clsDocstring = __import__('models').base.Base.__doc__
