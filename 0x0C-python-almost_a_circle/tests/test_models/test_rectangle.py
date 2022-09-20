@@ -27,3 +27,27 @@ class TestRectangle(unittest.TestCase):
         """Checks if negative id is valid"""
         r4 = Rectangle(2, 2, 0, 0, -1)
         self.assertEqual(r4.id, -1)
+
+    def test_type_errors(self):
+        """Checks for TypeErrors"""
+        with self.assertRaises(TypeError):
+            Rectangle("height", 1)
+        with self.assertRaises(TypeError):
+            Rectangle(1, "width")
+        with self.assertRaises(TypeError):
+            Rectangle(1, 1, "x", 0)
+        with self.assertRaises(TypeError):
+            Rectangle(1, 1, 0, "y")
+        with self.assertRaises(TypeError):
+            Rectangle(None)
+
+    def test_value_errors(self):
+        """Checks for ValueErrors"""
+        with self.assertRaises(ValueError):
+            Rectangle(0, 1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 0)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 1, -1, 0)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 1, 0, -1)
