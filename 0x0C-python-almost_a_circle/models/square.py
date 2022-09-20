@@ -14,16 +14,17 @@ class Square(Rectangle):
             id (_type_, optional): Desired ID for square. Defaults to None.
         """
         super().__init__(size, size, x, y, id)
+        self.size = size
 
     @property
     def size(self):
-        return self.__size
+        return self.size
 
     @size.setter
     def size(self, value):
         self.width = value
         self.height = value
-        self.__size = value
+        self.size = value
 
     def __str__(self):
         """Sets str value of the square"""
