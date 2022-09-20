@@ -14,7 +14,6 @@ class Square(Rectangle):
             id (_type_, optional): Desired ID for square. Defaults to None.
         """
         super().__init__(size, size, x, y, id)
-        self.size = size
 
     @property
     def size(self):
