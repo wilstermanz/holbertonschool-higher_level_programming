@@ -13,10 +13,10 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNotNone(modDocstring)
         clsDocstring = __import__('models').rectangle.Rectangle.__doc__
         self.assertIsNotNone(clsDocstring)
-        methDocstring = __import__('models').rectangle.Rectangle.area.__doc__
-        self.assertIsNotNone(methDocstring)
-        methDocstring = __import__('models').rectangle.Rectangle.display.__doc__
-        self.assertIsNotNone(methDocstring)
+        mDocstring = __import__('models').rectangle.Rectangle.area.__doc__
+        self.assertIsNotNone(mDocstring)
+        mDocstring = __import__('models').rectangle.Rectangle.display.__doc__
+        self.assertIsNotNone(mDocstring)
 
     def test_simple_testcases(self):
         """Checks for simple, correct test cases"""
@@ -63,3 +63,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.area(), 20)
         r = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r.area(), 56)
+
+    def test_str(self):
+        r = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(r.__str__(), "[Rectangle] (12) 2/1 - 4/6")
+        r = Rectangle(5, 5, 1)
+        self.assertEqual(r.__str__(), f"[Rectangle] ({r.id}) 1/0 - 5/5")
+        r = Rectangle(1, 1)
+        self.assertEqual(r.__str__(), f"[Rectangle] ({r.id}) 0/0 - 1/1")
