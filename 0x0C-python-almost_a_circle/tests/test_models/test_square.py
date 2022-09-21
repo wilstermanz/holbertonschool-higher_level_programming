@@ -2,6 +2,8 @@
 """Unittest for class Base"""
 import unittest
 import os
+from unittest.mock import patch
+from io import StringIO
 from models.square import Square
 from models.base import Base
 
@@ -29,6 +31,13 @@ class TestSquare(unittest.TestCase):
         r3 = Square(10, 0, 0, 12)
         self.assertEqual(r3.id, 12)
 
+    def test_bad_input(self):
+        """Tests with improper number of inputs"""
+        with self.assertRaises(TypeError):
+            Square()
+        with self.assertRaises(TypeError):
+            Square(1, 2, 3, 4, 5)
+
     def test_negative_id(self):
         """Checks if negative id is valid"""
         r4 = Square(2, 0, 0, -1)
@@ -55,12 +64,23 @@ class TestSquare(unittest.TestCase):
             Square(1, 0, -1)
 
     def test_area(self):
-        r = Square(1)
-        self.assertEqual(r.area(), 1)
-        r = Square(2)
-        self.assertEqual(r.area(), 4)
-        r = Square(8, 0, 0, 12)
-        self.assertEqual(r.area(), 64)
+        s = Square(1)
+        self.assertEqual(s.area(), 1)
+        s = Square(2)
+        self.assertEqual(s.area(), 4)
+        s = Square(8, 0, 0, 12)
+        self.assertEqual(s.area(), 64)
+
+    def test_display(self):
+        """Tests display method"""
+        s1 = Square(2)
+        s2 = Square(3, 1, 1)
+        with patch('sys.stdout', new = StringIO()) as outstream:
+            s1.display()
+            self.assertEqual('##\n##\n', outstream.getvalue())
+        with patch('sys.stdout', new = StringIO()) as outstream:
+            s2.display()
+            self.assertEqual('\n ###\n ###\n ###\n', outstream.getvalue())
 
     def test_str(self):
         r = Square(4, 2, 1, 12)

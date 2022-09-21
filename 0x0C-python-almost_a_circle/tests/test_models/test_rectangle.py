@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Unittest for class Base"""
 import unittest
+from unittest.mock import patch
+from io import StringIO
 from models.rectangle import Rectangle
 from models.base import Base
 import os
@@ -36,6 +38,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.id, 2)
         r3 = Rectangle(10, 2, 0, 0, 12)
         self.assertEqual(r3.id, 12)
+
+    def test_bad_input(self):
+        """Checks for improper number of inputs"""
+        with self.assertRaises(TypeError):
+            Rectangle()
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, 4, 5, 6)
 
     def test_negative_id(self):
         """Checks if negative id is valid"""
@@ -74,6 +83,17 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.area(), 20)
         r = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r.area(), 56)
+
+    def test_display(self):
+        """Tests display method"""
+        r1 = Rectangle(2, 2)
+        r2 = Rectangle(2, 3, 1, 1)
+        with patch('sys.stdout', new = StringIO()) as outstream:
+            r1.display()
+            self.assertEqual('##\n##\n', outstream.getvalue())
+        with patch('sys.stdout', new = StringIO()) as outstream:
+            r2.display()
+            self.assertEqual('\n ##\n ##\n ##\n', outstream.getvalue())
 
     def test_str(self):
         "Tests __str__ method"
