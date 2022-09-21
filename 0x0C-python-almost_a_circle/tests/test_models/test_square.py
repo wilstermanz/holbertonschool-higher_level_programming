@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittest for class Base"""
 import unittest
+import os
 from models.square import Square
 from models.base import Base
 
@@ -109,13 +110,23 @@ class TestSquare(unittest.TestCase):
         test_d = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
         self.assertDictEqual(s1_dictionary, test_d)
 
-    def test_json_to_string(self):
-        """Tests json_to_str static method"""
+    def test_to_json_string(self):
+        """Tests to_json_str static method"""
         s1 = Square(10, 7, 2, 1)
         dictionary = s1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
         json_test = '[{"id": 1, "x": 7, "y": 2, "size": 10}]'
         self.assertEqual(json_dictionary, json_test)
+        self.assertIsInstance(json_dictionary, str)
+
+    def test_to_json_string_bad(self):
+        """Tests bad input in json_str method"""
+        r1 = Square(10, 2, 8, 1)
+        json_dictionary = Base.to_json_string([])
+        self.assertEqual(json_dictionary, '[]')
+        self.assertIsInstance(json_dictionary, str)
+        json_dictionary = Base.to_json_string(None)
+        self.assertEqual(json_dictionary, '[]')
         self.assertIsInstance(json_dictionary, str)
 
     def test_save_to_file(self):
@@ -130,6 +141,13 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(list_dicts, test_list)
         self.assertIsInstance(list_dicts, str)
 
+    def test_save_to_file_bad(self):
+        """Tests bad input to save_to_file method"""
+        Square.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            list_dicts = file.read()
+        self.assertEqual(list_dicts, '[]')
+
     def test_from_json_str(self):
         """Test from_json_str method"""
         list_input = [
@@ -141,6 +159,11 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(json_list_input, str)
         self.assertIsInstance(list_output, list)
         self.assertEqual(list_output, list_input)
+
+    def test_from_json_str_bad(self):
+        output = Square.from_json_string(None)
+        self.assertIsInstance(output, list)
+        self.assertEqual(output, [])
 
     def test_create(self):
         """Test for create method"""
@@ -163,6 +186,13 @@ class TestSquare(unittest.TestCase):
         self.assertNotEqual(s1, n1)
         self.assertEqual(str(s2), str(n2))
         self.assertNotEqual(s2, n2)
+
+    def test_load_from_file_bad(self):
+        """Tests when load_from_file cannot find a file"""
+        os.remove("Square.json")
+        output = Square.load_from_file()
+        self.assertIsInstance(output, list)
+        self.assertEqual(output, [])
 
 
 if __name__ == '__main__':

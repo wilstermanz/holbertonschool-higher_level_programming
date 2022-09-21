@@ -3,6 +3,7 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+import os
 
 
 class TestRectangle(unittest.TestCase):
@@ -136,6 +137,16 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(json_dictionary, json_test)
         self.assertIsInstance(json_dictionary, str)
 
+    def test_to_json_string_bad(self):
+        """Tests bad input in json_str method"""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        json_dictionary = Base.to_json_string([])
+        self.assertEqual(json_dictionary, '[]')
+        self.assertIsInstance(json_dictionary, str)
+        json_dictionary = Base.to_json_string(None)
+        self.assertEqual(json_dictionary, '[]')
+        self.assertIsInstance(json_dictionary, str)
+
     def test_save_to_file(self):
         """Test save_to_file method"""
         r1 = Rectangle(10, 7, 2, 8, 1)
@@ -150,6 +161,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(list_dicts, test_list)
         self.assertIsInstance(list_dicts, str)
 
+    def test_save_to_file_bad(self):
+        """Tests bad input to save_to_file method"""
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            list_dicts = file.read()
+        self.assertEqual(list_dicts, '[]')
+
     def test_from_json_str(self):
         """Test from_json_str method"""
         list_input = [
@@ -161,6 +179,11 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(json_list_input, str)
         self.assertIsInstance(list_output, list)
         self.assertEqual(list_output, list_input)
+
+    def test_from_json_str_bad(self):
+        output = Rectangle.from_json_string(None)
+        self.assertIsInstance(output, list)
+        self.assertEqual(output, [])
 
     def test_create(self):
         """Test for create method"""
@@ -183,6 +206,13 @@ class TestRectangle(unittest.TestCase):
         self.assertNotEqual(r1, n1)
         self.assertEqual(str(r2), str(n2))
         self.assertNotEqual(r2, n2)
+
+    def test_load_from_file_bad(self):
+        """Tests when load_from_file cannot find a file"""
+        os.remove("Rectangle.json")
+        output = Rectangle.load_from_file()
+        self.assertIsInstance(output, list)
+        self.assertEqual(output, [])
 
 
 if __name__ == '__main__':
