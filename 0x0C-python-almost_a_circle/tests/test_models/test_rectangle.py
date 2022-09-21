@@ -12,14 +12,20 @@ class TestRectangle(unittest.TestCase):
         """Checks module and function docstrings"""
         modDocstring = __import__('models').rectangle.__doc__
         self.assertIsNotNone(modDocstring)
-        clsDocstring = __import__('models').rectangle.Rectangle.__doc__
-        self.assertIsNotNone(clsDocstring)
-        mDocstring = __import__('models').rectangle.Rectangle.area.__doc__
-        self.assertIsNotNone(mDocstring)
-        mDocstring = __import__('models').rectangle.Rectangle.display.__doc__
-        self.assertIsNotNone(mDocstring)
-        mDocstring = __import__('models').rectangle.Rectangle.update.__doc__
-        self.assertIsNotNone(mDocstring)
+        self.assertIsNotNone(Rectangle.__doc__)
+        self.assertIsNotNone(Rectangle.__init__.__doc__)
+        self.assertIsNotNone(Rectangle.area.__doc__)
+        self.assertIsNotNone(Rectangle.display.__doc__)
+        self.assertIsNotNone(Rectangle.__str__.__doc__)
+        self.assertIsNotNone(Rectangle.update.__doc__)
+        self.assertIsNotNone(Rectangle.to_dictionary.__doc__)
+
+    def test_objects(self):
+        """Tests for created objects"""
+        Base._Base__nb_objects = 0
+        self.assertEqual(Base._Base__nb_objects, 0)
+        Rectangle(2, 4)
+        self.assertEqual(Base._Base__nb_objects, 1)
 
     def test_simple_testcases(self):
         """Checks for simple, correct test cases"""
@@ -177,3 +183,7 @@ class TestRectangle(unittest.TestCase):
         self.assertNotEqual(r1, n1)
         self.assertEqual(str(r2), str(n2))
         self.assertNotEqual(r2, n2)
+
+
+if __name__ == '__main__':
+    unittest.main()

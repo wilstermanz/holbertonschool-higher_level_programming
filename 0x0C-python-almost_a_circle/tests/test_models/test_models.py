@@ -11,3 +11,7 @@ class TestModuleDocstring(unittest.TestCase):
         """Checks module docstrings"""
         modDocstring = __import__('models').__doc__
         self.assertIsNotNone(modDocstring)
+
+
+if __name__ == '__main__':
+    unittest.main()

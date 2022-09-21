@@ -11,15 +11,13 @@ class TestSquare(unittest.TestCase):
     def test_docstrings(self):
         """Checks module and function docstrings"""
         modDocstring = __import__('models').square.__doc__
-        self.assertIsNotNone(modDocstring)
-        clsDocstring = __import__('models').square.Square.__doc__
-        self.assertIsNotNone(clsDocstring)
-        mDocstring = __import__('models').square.Square.area.__doc__
-        self.assertIsNotNone(mDocstring)
-        mDocstring = __import__('models').square.Square.display.__doc__
-        self.assertIsNotNone(mDocstring)
-        mDocstring = __import__('models').square.Square.update.__doc__
-        self.assertIsNotNone(mDocstring)
+        self.assertIsNotNone(Square.__doc__)
+        self.assertIsNotNone(Square.__init__.__doc__)
+        self.assertIsNotNone(Square.area.__doc__)
+        self.assertIsNotNone(Square.display.__doc__)
+        self.assertIsNotNone(Square.__str__.__doc__)
+        self.assertIsNotNone(Square.update.__doc__)
+        self.assertIsNotNone(Square.to_dictionary.__doc__)
 
     def test_simple_testcases(self):
         """Checks for simple, correct test cases"""
@@ -125,12 +123,10 @@ class TestSquare(unittest.TestCase):
         s1 = Square(10, 2, 8, 1)
         s2 = Square(4, 0, 0, 2)
         Square.save_to_file([s1, s2])
-        with open("Rectangle.json", "r") as file:
+        with open("Square.json", "r") as file:
             list_dicts = file.read()
-        test_list = str('[{"id": 1, "width": 10, '
-                        '"height": 7, "x": 2, "y": 8}, '
-                        '{"id": 2, "width": 2, '
-                        '"height": 4, "x": 0, "y": 0}]')
+        test_list = str('[{"id": 1, "x": 2, "y": 8, "size": 10}, '
+                        '{"id": 2, "x": 0, "y": 0, "size": 4}]')
         self.assertEqual(list_dicts, test_list)
         self.assertIsInstance(list_dicts, str)
 
@@ -167,3 +163,7 @@ class TestSquare(unittest.TestCase):
         self.assertNotEqual(s1, n1)
         self.assertEqual(str(s2), str(n2))
         self.assertNotEqual(s2, n2)
+
+
+if __name__ == '__main__':
+    unittest.main()
