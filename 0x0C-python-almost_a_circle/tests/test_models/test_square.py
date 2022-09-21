@@ -135,6 +135,7 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(list_dicts, str)
 
     def test_from_json_str(self):
+        """Test from_json_str method"""
         list_input = [
                         {'id': 89, 'size': 10},
                         {'id': 7, 'size': 200}
@@ -144,3 +145,25 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(json_list_input, str)
         self.assertIsInstance(list_output, list)
         self.assertEqual(list_output, list_input)
+
+    def test_create(self):
+        """Test for create method"""
+        s1 = Square(3, 1, 0, 1)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertEqual(str(s1), str(s2))
+        self.assertNotEqual(s1, s2)
+
+    def test_load_from_file(self):
+        """Test load_from_file method"""
+        s1 = Square(10, 2, 8, 1)
+        s2 = Square(2, 0, 0, 2)
+        list_squares_input = [s1, s2]
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+        n1 = list_squares_output[0]
+        n2 = list_squares_output[1]
+        self.assertEqual(str(s1), str(n1))
+        self.assertNotEqual(s1, n1)
+        self.assertEqual(str(s2), str(n2))
+        self.assertNotEqual(s2, n2)

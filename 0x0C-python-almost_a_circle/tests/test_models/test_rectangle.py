@@ -145,6 +145,7 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(list_dicts, str)
 
     def test_from_json_str(self):
+        """Test from_json_str method"""
         list_input = [
                         {'id': 89, 'width': 10, 'height': 4},
                         {'id': 7, 'width': 1, 'height': 7}
@@ -154,3 +155,25 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(json_list_input, str)
         self.assertIsInstance(list_output, list)
         self.assertEqual(list_output, list_input)
+
+    def test_create(self):
+        """Test for create method"""
+        r1 = Rectangle(3, 5, 1, 0, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
+        self.assertNotEqual(r1, r2)
+
+    def test_load_from_file(self):
+        """Test load_from_file method"""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+        n1 = list_rectangles_output[0]
+        n2 = list_rectangles_output[1]
+        self.assertEqual(str(r1), str(n1))
+        self.assertNotEqual(r1, n1)
+        self.assertEqual(str(r2), str(n2))
+        self.assertNotEqual(r2, n2)
