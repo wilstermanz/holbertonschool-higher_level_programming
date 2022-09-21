@@ -132,3 +132,15 @@ class TestSquare(unittest.TestCase):
                         '{"id": 2, "width": 2, '
                         '"height": 4, "x": 0, "y": 0}]')
         self.assertEqual(list_dicts, test_list)
+        self.assertIsInstance(list_dicts, str)
+
+    def test_from_json_str(self):
+        list_input = [
+                        {'id': 89, 'size': 10},
+                        {'id': 7, 'size': 200}
+                    ]
+        json_list_input = Square.to_json_string(list_input)
+        list_output = Square.from_json_string(json_list_input)
+        self.assertIsInstance(json_list_input, str)
+        self.assertIsInstance(list_output, list)
+        self.assertEqual(list_output, list_input)

@@ -137,8 +137,20 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file([r1, r2])
         with open("Rectangle.json", "r") as file:
             list_dicts = file.read()
-        test_list = ('[{"id": 1, "width": 10, '
-                     '"height": 7, "x": 2, "y": 8}, '
-                     '{"id": 2, "width": 2, '
-                     '"height": 4, "x": 0, "y": 0}]')
+        test_list = str('[{"id": 1, "width": 10, '
+                        '"height": 7, "x": 2, "y": 8}, '
+                        '{"id": 2, "width": 2, '
+                        '"height": 4, "x": 0, "y": 0}]')
         self.assertEqual(list_dicts, test_list)
+        self.assertIsInstance(list_dicts, str)
+
+    def test_from_json_str(self):
+        list_input = [
+                        {'id': 89, 'width': 10, 'height': 4},
+                        {'id': 7, 'width': 1, 'height': 7}
+                    ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertIsInstance(json_list_input, str)
+        self.assertIsInstance(list_output, list)
+        self.assertEqual(list_output, list_input)
