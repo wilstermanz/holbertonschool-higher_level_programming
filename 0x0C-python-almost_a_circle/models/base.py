@@ -41,13 +41,16 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        with open(cls.__name__+".json", 'r', encoding="utf-8") as file:
-            list_dict = cls.from_json_string(file.read())
-        list_inst = []
-        for dict in list_dict:
-            new_inst = cls.create(**dict)
-            list_inst.append(new_inst)
-        return list_inst
+        try:
+            with open(cls.__name__+".json", 'r', encoding="utf-8") as file:
+                list_dict = cls.from_json_string(file.read())
+            list_inst = []
+            for dict in list_dict:
+                new_inst = cls.create(**dict)
+                list_inst.append(new_inst)
+            return list_inst
+        except FileNotFoundError:
+            return []
 
     @classmethod
     def create(cls, **dictionary):
