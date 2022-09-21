@@ -47,8 +47,7 @@ class Base:
                 list_dict = cls.from_json_string(file.read())
             list_inst = []
             for dict in list_dict:
-                new_inst = cls.create(**dict)
-                list_inst.append(new_inst)
+                list_inst.append(cls.create(**dict))
             return list_inst
         except FileNotFoundError:
             return []
