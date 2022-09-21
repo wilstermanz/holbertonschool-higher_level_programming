@@ -2,6 +2,7 @@
 """Unittest for class Base"""
 import unittest
 from models.square import Square
+from models.base import Base
 
 
 class TestSquare(unittest.TestCase):
@@ -103,3 +104,18 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 1)
         self.assertEqual(r1.y, 3)
+
+    def test_to_dictionary(self):
+        s1 = Square(10, 2, 1, 1)
+        s1_dictionary = s1.to_dictionary()
+        test_d = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertDictEqual(s1_dictionary, test_d)
+
+    def test_json_to_string(self):
+        """Tests json_to_str static method"""
+        s1 = Square(10, 7, 2, 1)
+        dictionary = s1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        json_test = '[{"id": 1, "x": 7, "y": 2, "size": 10}]'
+        self.assertEqual(json_dictionary, json_test)
+        self.assertIsInstance(json_dictionary, str)
