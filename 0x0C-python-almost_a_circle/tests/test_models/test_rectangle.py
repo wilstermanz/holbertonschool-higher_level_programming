@@ -88,10 +88,10 @@ class TestRectangle(unittest.TestCase):
         """Tests display method"""
         r1 = Rectangle(2, 2)
         r2 = Rectangle(2, 3, 1, 1)
-        with patch('sys.stdout', new = StringIO()) as outstream:
+        with patch('sys.stdout', new=StringIO()) as outstream:
             r1.display()
             self.assertEqual('##\n##\n', outstream.getvalue())
-        with patch('sys.stdout', new = StringIO()) as outstream:
+        with patch('sys.stdout', new=StringIO()) as outstream:
             r2.display()
             self.assertEqual('\n ##\n ##\n ##\n', outstream.getvalue())
 

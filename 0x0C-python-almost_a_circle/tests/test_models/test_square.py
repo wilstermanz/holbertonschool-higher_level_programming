@@ -75,10 +75,10 @@ class TestSquare(unittest.TestCase):
         """Tests display method"""
         s1 = Square(2)
         s2 = Square(3, 1, 1)
-        with patch('sys.stdout', new = StringIO()) as outstream:
+        with patch('sys.stdout', new=StringIO()) as outstream:
             s1.display()
             self.assertEqual('##\n##\n', outstream.getvalue())
-        with patch('sys.stdout', new = StringIO()) as outstream:
+        with patch('sys.stdout', new=StringIO()) as outstream:
             s2.display()
             self.assertEqual('\n ###\n ###\n ###\n', outstream.getvalue())
 
