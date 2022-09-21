@@ -40,6 +40,16 @@ class Base:
             file.write(cls.to_json_string(list_of_dicts))
 
     @classmethod
+    def load_from_file(cls):
+        with open(cls.__name__+".json", 'r', encoding="utf-8") as file:
+            list_dict = cls.from_json_string(file.read())
+        list_inst = []
+        for dict in list_dict:
+            new_inst = cls.create(**dict)
+            list_inst.append(new_inst)
+        return list_inst
+
+    @classmethod
     def create(cls, **dictionary):
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
