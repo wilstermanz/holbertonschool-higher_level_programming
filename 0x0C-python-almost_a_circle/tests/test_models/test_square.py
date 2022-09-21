@@ -119,3 +119,16 @@ class TestSquare(unittest.TestCase):
         json_test = '[{"id": 1, "x": 7, "y": 2, "size": 10}]'
         self.assertEqual(json_dictionary, json_test)
         self.assertIsInstance(json_dictionary, str)
+
+    def test_save_to_file(self):
+        """Test save_to_file method"""
+        s1 = Square(10, 2, 8, 1)
+        s2 = Square(4, 0, 0, 2)
+        Square.save_to_file([s1, s2])
+        with open("Rectangle.json", "r") as file:
+            list_dicts = file.read()
+        test_list = str('[{"id": 1, "width": 10, '
+                        '"height": 7, "x": 2, "y": 8}, '
+                        '{"id": 2, "width": 2, '
+                        '"height": 4, "x": 0, "y": 0}]')
+        self.assertEqual(list_dicts, test_list)

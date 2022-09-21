@@ -121,11 +121,24 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1_dictionary, test_d)
         self.assertIsInstance(r1_dictionary, dict)
 
-    def test_json_to_string(self):
-        """Tests json_to_str static method"""
+    def test_to_json_string(self):
+        """Tests to_json_str static method"""
         r1 = Rectangle(10, 7, 2, 8, 1)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
         json_test = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
         self.assertEqual(json_dictionary, json_test)
         self.assertIsInstance(json_dictionary, str)
+
+    def test_save_to_file(self):
+        """Test save_to_file method"""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as file:
+            list_dicts = file.read()
+        test_list = ('[{"id": 1, "width": 10, '
+                     '"height": 7, "x": 2, "y": 8}, '
+                     '{"id": 2, "width": 2, '
+                     '"height": 4, "x": 0, "y": 0}]')
+        self.assertEqual(list_dicts, test_list)
