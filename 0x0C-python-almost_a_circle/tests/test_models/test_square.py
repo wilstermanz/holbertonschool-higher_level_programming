@@ -140,6 +140,7 @@ class TestSquare(unittest.TestCase):
                         '{"id": 2, "x": 0, "y": 0, "size": 4}]')
         self.assertEqual(list_dicts, test_list)
         self.assertIsInstance(list_dicts, str)
+        self.assertTrue(os.path.isfile('Square.json'))
 
     def test_save_to_file_bad(self):
         """Tests bad input to save_to_file method"""
@@ -147,6 +148,7 @@ class TestSquare(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             list_dicts = file.read()
         self.assertEqual(list_dicts, '[]')
+        self.assertTrue(os.path.isfile('Square.json'))
 
     def test_from_json_str(self):
         """Test from_json_str method"""
@@ -173,6 +175,15 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(str(s1), str(s2))
         self.assertNotEqual(s1, s2)
 
+    def test_create_bad(self):
+        s1 = Square(5, 1, 0, 1)
+        s1_dictionary = s1.to_dictionary()
+        with self.assertRaises(TypeError):
+            Square.create(s1_dictionary)
+        s1_dictionary = {'bad', 'dict'}
+        with self.assertRaises(TypeError):
+            Square.create(s1_dictionary)
+
     def test_load_from_file(self):
         """Test load_from_file method"""
         s1 = Square(10, 2, 8, 1)
@@ -190,6 +201,7 @@ class TestSquare(unittest.TestCase):
     def test_load_from_file_bad(self):
         """Tests when load_from_file cannot find a file"""
         os.remove("Square.json")
+        self.assertFalse(os.path.isfile('Square.json'))
         output = Square.load_from_file()
         self.assertIsInstance(output, list)
         self.assertEqual(output, [])

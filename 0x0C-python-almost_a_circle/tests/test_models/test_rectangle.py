@@ -160,6 +160,7 @@ class TestRectangle(unittest.TestCase):
                         '"height": 4, "x": 0, "y": 0}]')
         self.assertEqual(list_dicts, test_list)
         self.assertIsInstance(list_dicts, str)
+        self.assertTrue(os.path.isfile('Rectangle.json'))
 
     def test_save_to_file_bad(self):
         """Tests bad input to save_to_file method"""
@@ -167,6 +168,7 @@ class TestRectangle(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             list_dicts = file.read()
         self.assertEqual(list_dicts, '[]')
+        self.assertTrue(os.path.isfile('Rectangle.json'))
 
     def test_from_json_str(self):
         """Test from_json_str method"""
@@ -193,6 +195,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(r1), str(r2))
         self.assertNotEqual(r1, r2)
 
+    def test_create_bad(self):
+        r1 = Rectangle(3, 5, 1, 0, 1)
+        r1_dictionary = r1.to_dictionary()
+        with self.assertRaises(TypeError):
+            Rectangle.create(r1_dictionary)
+        r1_dictionary = {'bad', 'dict'}
+        with self.assertRaises(TypeError):
+            Rectangle.create(r1_dictionary)
+
     def test_load_from_file(self):
         """Test load_from_file method"""
         r1 = Rectangle(10, 7, 2, 8, 1)
@@ -210,6 +221,7 @@ class TestRectangle(unittest.TestCase):
     def test_load_from_file_bad(self):
         """Tests when load_from_file cannot find a file"""
         os.remove("Rectangle.json")
+        self.assertFalse(os.path.isfile('Rectangle.json'))
         output = Rectangle.load_from_file()
         self.assertIsInstance(output, list)
         self.assertEqual(output, [])
