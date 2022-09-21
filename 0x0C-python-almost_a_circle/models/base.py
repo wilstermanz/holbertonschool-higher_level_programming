@@ -41,6 +41,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """Creates instances from file, and returns list of instances"""
         try:
             with open(cls.__name__+".json", 'r', encoding="utf-8") as file:
                 list_dict = cls.from_json_string(file.read())
@@ -54,6 +55,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """Creates new instances from dictionary representation"""
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
         if cls.__name__ == "Square":
