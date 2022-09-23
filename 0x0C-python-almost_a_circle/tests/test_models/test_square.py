@@ -241,5 +241,6 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(JSONDecodeError):
             output = Square.load_from_file()
 
+
 if __name__ == '__main__':
     unittest.main()
