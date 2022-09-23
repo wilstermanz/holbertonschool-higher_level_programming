@@ -214,6 +214,10 @@ class TestRectangle(unittest.TestCase):
         r2 = Rectangle.create(**r1_dictionary)
         self.assertEqual(str(r1), str(r2))
         self.assertNotEqual(r1, r2)
+        Base._Base__nb_objects = 0
+        r1 = Rectangle(1, 1, 0, 0, 1)
+        r2 = Rectangle.create()
+        self.assertEqual(str(r1), str(r2))
 
     def test_create_bad(self):
         r1 = Rectangle(3, 5, 1, 0, 1)
@@ -223,6 +227,10 @@ class TestRectangle(unittest.TestCase):
         r1_dictionary = {'bad', 'dict'}
         with self.assertRaises(TypeError):
             Rectangle.create(r1_dictionary)
+        with self.assertRaises(TypeError):
+            Rectangle.create(**r1_dictionary)
+        with self.assertRaises(TypeError):
+            Rectangle.create(None)
 
     def test_load_from_file(self):
         """Test load_from_file method"""

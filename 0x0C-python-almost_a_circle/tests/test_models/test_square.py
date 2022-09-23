@@ -203,6 +203,10 @@ class TestSquare(unittest.TestCase):
         s1_dictionary = {'bad', 'dict'}
         with self.assertRaises(TypeError):
             Square.create(s1_dictionary)
+        with self.assertRaises(TypeError):
+            Square.create(**s1_dictionary)
+        with self.assertRaises(TypeError):
+            Square.create(None)
 
     def test_load_from_file(self):
         """Test load_from_file method"""
