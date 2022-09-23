@@ -48,6 +48,10 @@ class TestBase(unittest.TestCase):
         obj5 = Base(None)
         self.assertEqual(obj5.id, 4)
 
+    def test_bad(self):
+        with self.assertRaises(TypeError):
+            Base(1, 1)
+
     def test_negative(self):
         """Tests negative ids"""
         neg = Base(-1)
