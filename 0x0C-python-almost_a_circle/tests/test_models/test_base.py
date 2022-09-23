@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittest for class Base"""
 import unittest
+import os
 from models.base import Base
 
 
@@ -53,6 +54,34 @@ class TestBase(unittest.TestCase):
         self.assertEqual(neg.id, -1)
         neg = Base(-100)
         self.assertEqual(neg.id, -100)
+
+    def test_to_json_string(self):
+        """Tests to_json_str static method"""
+        b1 = Base(5)
+        json_dictionary = Base.to_json_string([b1.__dict__])
+        json_test = '[{"id": 5}]'
+        self.assertEqual(json_dictionary, json_test)
+        self.assertIsInstance(json_dictionary, str)
+        Base._Base__nb_objects = 0
+        b2 = Base()
+        json_dictionary = Base.to_json_string([b2.__dict__])
+        json_test = '[{"id": 1}]'
+        self.assertEqual(json_dictionary, json_test)
+        self.assertIsInstance(json_dictionary, str)
+
+    def test_to_json_string_bad(self):
+        """Tests bad input in json_str method"""
+        Base._Base__nb_objects = 0
+        b1 = Base(None)
+        json_dictionary = Base.to_json_string([b1.__dict__])
+        json_test = '[{"id": 1}]'
+        self.assertEqual(json_dictionary, json_test)
+        self.assertIsInstance(json_dictionary, str)
+        b2 = Base("Foo")
+        json_dictionary = Base.to_json_string([b2.__dict__])
+        json_test = '[{"id": "Foo"}]'
+        self.assertEqual(json_dictionary, json_test)
+        self.assertIsInstance(json_dictionary, str)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Unittest for models module"""
 import unittest
-import models
 
 
 class TestModuleDocstring(unittest.TestCase):
