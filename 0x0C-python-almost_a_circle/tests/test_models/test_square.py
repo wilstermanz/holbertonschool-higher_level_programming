@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Unittest for class Base"""
+from json import JSONDecodeError
 import unittest
 import os
 from unittest.mock import patch
@@ -229,7 +230,16 @@ class TestSquare(unittest.TestCase):
         output = Square.load_from_file()
         self.assertIsInstance(output, list)
         self.assertEqual(output, [])
-
+        with open("Square.json", 'w', encoding="utf-8") as file:
+            file.write("")
+        self.assertTrue(os.path.isfile('Rectangle.json'))
+        output = Square.load_from_file()
+        self.assertIsInstance(output, list)
+        self.assertEqual(output, [])
+        with open('Square.json', 'w', encoding="utf-8") as file:
+            file.write("Bad format")
+        with self.assertRaises(JSONDecodeError):
+            output = Square.load_from_file()
 
 if __name__ == '__main__':
     unittest.main()
