@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Unittest for class Base"""
+from json import JSONDecodeError
 import unittest
 from unittest.mock import patch
 from io import StringIO
@@ -247,12 +248,24 @@ class TestRectangle(unittest.TestCase):
         self.assertNotEqual(r2, n2)
 
     def test_load_from_file_bad(self):
-        """Tests when load_from_file cannot find a file"""
+        """Tests when load_from_file cannot find a file,
+            or file has wrong format
+        """
         os.remove("Rectangle.json")
         self.assertFalse(os.path.isfile('Rectangle.json'))
         output = Rectangle.load_from_file()
         self.assertIsInstance(output, list)
         self.assertEqual(output, [])
+        with open("Rectangle.json", 'w', encoding="utf-8") as file:
+            file.write("")
+        self.assertTrue(os.path.isfile('Rectangle.json'))
+        output = Rectangle.load_from_file()
+        self.assertIsInstance(output, list)
+        self.assertEqual(output, [])
+        with open('Rectangle.json', 'w', encoding="utf-8") as file:
+            file.write("Bad format")
+        with self.assertRaises(JSONDecodeError):
+            output = Rectangle.load_from_file()
 
 
 if __name__ == '__main__':
