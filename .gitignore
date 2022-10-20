@@ -133,3 +133,4 @@ dmypy.json
 *.json
 
 0x0B-python-input_output/my_file_0.txt
+0x0B-python-object_relational_mapping/*.sql
