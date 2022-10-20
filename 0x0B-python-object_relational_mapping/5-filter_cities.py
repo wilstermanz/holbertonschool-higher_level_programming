@@ -18,12 +18,12 @@ def filter_cities():
     cur = db.cursor()
     name = argv[4]
     cur.execute("SELECT cities.name FROM cities\
-                LEFT JOIN states\
-                ON BINARY cities.state_id = states.id\
-                WHERE states.id = (SELECT id\
-                                   FROM states\
-                                   WHERE name = %s)\
-                ORDER BY cities.id", (name,)
+                 LEFT JOIN states\
+                 ON BINARY cities.state_id = states.id\
+                 WHERE states.id = (SELECT id\
+                                    FROM states\
+                                    WHERE name = %s)\
+                 ORDER BY cities.id", (name,)
                 )
     rows = cur.fetchall()
     output = ''
