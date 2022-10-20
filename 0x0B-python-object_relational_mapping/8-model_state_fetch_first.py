@@ -15,9 +15,12 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State.id, State.name)\
-                    .order_by(State.id.asc())\
-                    .all()
-    print("{}: {}".format(states[0][0], states[0][1]))
+    first_state = session.query(State.id, State.name)\
+                         .order_by(State.id.asc())\
+                         .first()
+    if len(first_state) != 0:
+        print(f"{first_state.id}: {first_state.name}")
+    else:
+        print("Nothing")
 
     session.close()
