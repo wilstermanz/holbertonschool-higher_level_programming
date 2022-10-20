@@ -5,10 +5,8 @@ from sys import argv
 
 
 def filter_my_states():
-    """
-    Takes in an argument and displays all values in
-    the states table where name matches the argument.
-    """
+    """Takes in an argument and displays all values in
+    the states table where name matches the argument"""
 
     db = MySQLdb.connect(host='localhost',
                          port=3306,
