@@ -4,7 +4,7 @@ import MySQLdb
 from sys import argv
 
 
-def filter_my_states():
+def my_filter_states():
     """Takes in an argument and displays all values in
     the states table where name matches the argument"""
 
@@ -27,4 +27,4 @@ def filter_my_states():
 
 
 if __name__ == "__main__":
-    filter_my_states()
+    my_filter_states()
