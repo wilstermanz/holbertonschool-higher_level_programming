@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""prints the State object with the name passed as argument"""
+"""adds the State object “Louisiana” to the database"""
 
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -15,12 +15,11 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State.id, State.name)\
-                   .filter(State.name.like(argv[4]))\
-                   .first()
-    if state:
-        print(f"{state[0]}")
-    else:
-        print('Not found')
+    session.add(State(name='Louisiana'))
+    louisiana = session.query(State).filter_by(name='Louisiana')\
+                       .order_by(State.id.desc())\
+                       .first()
+    session.commit()
+    print(louisiana.id)
 
     session.close()
