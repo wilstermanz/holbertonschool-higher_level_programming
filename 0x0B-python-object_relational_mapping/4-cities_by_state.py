@@ -17,9 +17,9 @@ def cities_by_state():
 
     cur = db.cursor()
     cur.execute("SELECT cities.id, cities.name, states.name\
-                    FROM cities, states\
-                    WHERE cities.state_id = states.id\
-                    ORDER BY cities.id"
+                FROM states, cities\
+                WHERE states.id = cities.state_id\
+                ORDER BY cities.id asc;"
                 )
     rows = cur.fetchall()
     for row in rows:
