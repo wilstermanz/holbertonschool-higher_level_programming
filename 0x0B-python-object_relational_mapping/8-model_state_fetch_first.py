@@ -18,7 +18,7 @@ if __name__ == "__main__":
     first_state = session.query(State.id, State.name)\
                          .order_by(State.id.asc())\
                          .first()
-    if len(first_state) != 0:
+    if first_state:
         print(f"{first_state.id}: {first_state.name}")
     else:
         print("Nothing")
