@@ -16,8 +16,7 @@ def filter_states():
 
     cur = db.cursor()
     cur.execute("SELECT * FROM states "
-                "WHERE name LIKE 'N%' "
-                "OR name LIKE 'n%' "
+                "WHERE name REGEXP '^N' "
                 "ORDER BY id ASC"
                 )
     rows = cur.fetchall()
