@@ -15,10 +15,7 @@ def filter_states():
                          )
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states "
-                "WHERE name REGEXP '^N' "
-                "ORDER BY id ASC"
-                )
+    cur.execute("SELECT * FROM states WHERE ASCII(name)=78 ORDER BY id")
     rows = cur.fetchall()
     for row in rows:
         print(row)
