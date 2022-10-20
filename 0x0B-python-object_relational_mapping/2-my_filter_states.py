@@ -17,7 +17,7 @@ def my_filter_states():
 
     cur = db.cursor()
     cur.execute("SELECT * FROM states "
-                "WHERE name = '{}' "
+                "WHERE BINARY name = '{}' "
                 "ORDER BY id".format(argv[4])
                 )
 
