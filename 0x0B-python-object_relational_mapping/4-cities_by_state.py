@@ -17,10 +17,9 @@ def cities_by_state():
 
     cur = db.cursor()
     cur.execute("SELECT cities.id, cities.name, states.name\
-                FROM states\
-                LEFT JOIN cities\
-                ON states.id = cities.state_id\
-                ORDER BY cities.id asc;"
+                    FROM cities, states\
+                    WHERE cities.state_id = states.id\
+                    ORDER BY cities.id"
                 )
     rows = cur.fetchall()
     for row in rows:
