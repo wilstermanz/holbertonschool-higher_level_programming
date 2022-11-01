@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """fetches https://intranet.hbtn.io/status"""
-import urllib
+from urllib import request
 
 if __name__ == "__main__":
     """import guarded"""
-    with urllib.request.urlopen("https://intranet.hbtn.io/status") as resp:
+    req = request.Request("https://intranet.hbtn.io/status")
+    with request.urlopen(req) as resp:
+        resp = resp.read()
         print(f"Body response:\n"
-              f"\t- type: {type(resp.peek())}\n"
-              f"\t- content: {resp.peek()}\n"
-              f"\t- utf8 content: {resp.peek().decode('utf-8')}\n"
+              f"\t- type: {type(resp)}\n"
+              f"\t- content: {resp}\n"
+              f"\t- utf8 content: {resp.decode('utf8')}"
               )
