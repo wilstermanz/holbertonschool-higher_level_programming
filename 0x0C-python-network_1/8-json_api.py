@@ -8,11 +8,11 @@ from sys import argv
 
 
 def main():
-    r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
     if argv == 1:
         q = ''
     else:
         q = argv[1]
+    r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
     try:
         r_dict = r.json()
         if len(r_dict) == 0:
