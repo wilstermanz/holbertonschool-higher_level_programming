@@ -8,14 +8,17 @@ from sys import argv
 
 
 def main(q=""):
-    r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
+    url = "http://0.0.0.0:5000/search_user"
+    req = requests.post(url, data={'q': q})
     try:
-        r_dict = r.json()
-        if len(r_dict) == 0:
-            print("No Result")
+        dict = req.json()
+        id = dict.get('id')
+        name = dict.get('name')
+        if len(dict) == 0:
+            print("No result")
         else:
-            print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
-    except Exception:
+            print("[{}] {}".format(id, name))
+    except Exception as e:
         print("Not a valid JSON")
 
 
