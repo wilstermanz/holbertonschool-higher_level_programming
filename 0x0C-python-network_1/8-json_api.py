@@ -11,7 +11,7 @@ def main(q=""):
     r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
     try:
         r_dict = r.json()
-        if len(r_dict) == 0:
+        if len(r_dict) == 0 or r_dict.get('id') is None:
             print("No Result")
         else:
             print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
