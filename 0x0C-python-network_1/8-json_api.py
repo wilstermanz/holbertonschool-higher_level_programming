@@ -7,7 +7,7 @@ import requests
 from sys import argv
 
 
-def main(argv):
+def main():
     q = "" if len(argv) == 1 else argv[1]
     r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
     try:
@@ -21,4 +21,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(argv)
+    main()
