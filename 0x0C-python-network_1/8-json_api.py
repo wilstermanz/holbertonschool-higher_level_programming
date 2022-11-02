@@ -7,7 +7,8 @@ import requests
 from sys import argv
 
 
-def main(q=""):
+def main(argv):
+    q = "" if len(argv) == 1 else argv[1]
     r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
     try:
         r_dict = r.json()
@@ -20,4 +21,4 @@ def main(q=""):
 
 
 if __name__ == "__main__":
-    main(argv[1] if len(argv) != 1 else main())
+    main(argv)
