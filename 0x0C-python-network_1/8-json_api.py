@@ -7,7 +7,7 @@ import requests
 from sys import argv
 
 
-def main():
+if __name__ == "__main__":
     if argv == 1:
         q = ''
     else:
@@ -21,7 +21,3 @@ def main():
             print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
     except Exception:
         print("Not a valid JSON")
-
-
-if __name__ == "__main__":
-    main()
