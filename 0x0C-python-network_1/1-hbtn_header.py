@@ -5,7 +5,6 @@ displays the value of the X-Request-Id variable
 """
 from urllib import request
 from sys import argv
-from urllib import request, parse
 
 
 if __name__ == "__main__":
