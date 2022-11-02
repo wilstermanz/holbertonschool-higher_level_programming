@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-"""
-This script fetches https://intranet.hbtn.io/status
-"""
+"""fetches https://intranet.hbtn.io/status"""
 from urllib import request
 
-
 if __name__ == "__main__":
-    req = request.Request('https://intranet.hbtn.io/status')
-    with request.urlopen(req) as page:
-        page = page.read()
+    """import guarded"""
+    with request.urlopen("https://intranet.hbtn.io/status") as resp:
+        resp = resp.read()
         print("Body response:")
-        print("\t- type: {}".format(type(page)))
-        print("\t- content: {}".format(page))
-        print("\t- utf8 content: {}".format(page.decode('utf8')))
+        print("\t- type: {}".format(type(resp)))
+        print("\t- content: {}".format(resp))
+        print("\t- utf8 content: {}".format(resp.decode('utf-8')))
