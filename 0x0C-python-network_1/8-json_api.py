@@ -7,11 +7,15 @@ import requests
 from sys import argv
 
 
-def main(q=""):
+def main():
     r = requests.post("http://0.0.0.0:5000/search_user", data={'q': q})
+    if argv == 1:
+        q = ''
+    else:
+        q = argv[1]
     try:
         r_dict = r.json()
-        if len(r_dict) == 0 or r_dict.get('id') is None:
+        if len(r_dict) == 0:
             print("No Result")
         else:
             print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
@@ -20,4 +24,4 @@ def main(q=""):
 
 
 if __name__ == "__main__":
-    main(argv[1]) if len(argv) != 1 else main()
+    main()
