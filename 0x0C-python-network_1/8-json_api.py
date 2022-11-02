@@ -20,4 +20,4 @@ def main(q=""):
 
 
 if __name__ == "__main__":
-    main(argv[1] if len(argv) == 1 else None)
+    main(argv[1] if len(argv) > 1 else None)
