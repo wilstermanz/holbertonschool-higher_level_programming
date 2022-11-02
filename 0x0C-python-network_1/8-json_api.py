@@ -12,7 +12,7 @@ def main(q=""):
     try:
         r_dict = r.json()
         if r_dict.get('id') is None:
-            print("No Result")
+            print("No result")
         else:
             print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
     except Exception:
