@@ -11,5 +11,4 @@ if __name__ == "__main__":
     """import guarded"""
     with request.urlopen(argv[1]) as resp:
         resp = dict(resp.info())
-        if 'X-Request-Id' in resp:
-            print(resp['X-Request-Id'])
+        print(resp['X-Request-Id'])
