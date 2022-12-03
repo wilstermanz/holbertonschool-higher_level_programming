@@ -1,0 +1,1 @@
+A readme for 0x01-javascript_objects_scopes_closures

@@ -130,6 +130,7 @@ dmypy.json
 
 # other
 *main.py
+*main.js
 *.json
 
 0x0B-python-input_output/my_file_0.txt
