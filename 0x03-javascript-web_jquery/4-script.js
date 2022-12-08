@@ -1,4 +1,4 @@
-$($('#toggle_header').click(function () {
+$('#toggle_header').click(function () {
   if ($('header').hasClass('red')) {
     $('header').removeClass('red');
     $('header').addClass('green');
@@ -6,4 +6,4 @@ $($('#toggle_header').click(function () {
     $('header').removeClass('green');
     $('header').addClass('red');
   }
-}));
+});
